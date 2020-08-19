@@ -80,7 +80,7 @@ class SpreadsheetManager {
       //removes line breaks and multiple spaces
       const cell = topRow[c]
         .replace(/(\r\n|\n|\r)/gm, " ")
-        .replace(/\s\s+/g, " ");
+        .replace(/\s\s+/g, "_");
       obj[cell] = c;
     }
     return obj;
