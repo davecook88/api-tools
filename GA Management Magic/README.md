@@ -1,3 +1,11 @@
+Added by Dave
+---------
+To use this script in a new spreadsheet, the code in this file can be directly uploaded to Google Apps Script using Clasp: https://www.npmjs.com/package/@google/clasp
+
+Be sure to enable the API in your Scripts account: https://script.google.com/u/2/home/usersettings
+
+Delete the .clasp.json file and run `clasp login` followed by `clasp push` to create a new sheet. Alternatively, change the scriptId to a script attached to a spreadsheet in your account to upload this to a different project.
+
 ---
 
 Many of you have written about errors related to quota limits. This is a known issue related to the Google Analytics Management API daily quota and is being worked on.
