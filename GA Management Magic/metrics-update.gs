@@ -3,27 +3,7 @@
 *
 * Copyright ©2015 Pedro Avila (pdro@google.com)
 ***************************************************************************/
-function testMetricUpdate(){
-  try {
-    const resource = {
-      "type": "TIME",
-      "min_value": "1",
-      "max_value": "100",
-      "name": "time-working",
-      "scope": "HIT",
-//      "kind": "analytics#customMetric",
-      "active": true
-    };
-    const account = "145357337";
-    const property = 'UA-145357337-3';
-    const metricId = 'ga:metric1';
-    const options = {ignoreCustomDataSourceLinks: true};
-    const res  = Analytics.Management.CustomMetrics.update(resource,account,property,metricId,options);
-    Logger.log(res.accountId);
-  } catch(err){
-    Logger.log(err)
-  }
-}
+
 
 /**************************************************************************
 * Obtains input from user necessary for updating metrics.
@@ -119,14 +99,12 @@ function updateMetrics(metrics) {
           
           // If the index exists, set the necessary values update the metric
           if (Analytics.Management.CustomMetrics.get(account, property, metricId).index) {
-            var resource = {"name":name,"scope":scope,"type":type,"min_value":min,"max_value":max,"active":active};
+            var resource = {"name":name,"scope":scope,"type":type,"minimum":min,"maximum":max,"active":active};
             var options = {ignoreCustomDataSourceLinks: true};
             
             // Attempt to update the metric through the API
-            try { 
-              Analytics.Management.CustomMetrics.update(resource,account,property,metricId,options);
-                } catch (e) {
-                  return "failed to update all metrics\n"+ e.message}
+            try { Analytics.Management.CustomMetrics.update(resource,account,property,metricId,options);
+                } catch (e) {return "failed to update all metrics\n"+ e.message}
           }
         }
         
@@ -137,11 +115,7 @@ function updateMetrics(metrics) {
             var resource = {"index":index,"name":name,"scope":scope,"type":type,"minimum":min,"maximum":max,"active":active};
             
             // Attempt to inser the metric
-            try { 
-              Analytics.Management.CustomMetrics.insert(resource,account,property); 
-            } catch (e) {
-              return "failed to insert all metrics\n"+ e.message
-            }
+            try { Analytics.Management.CustomMetrics.insert(resource,account,property); } catch (e) {return "failed to insert all metrics\n"+ e.message}
           } else return "failed to insert all metrics\n"+ e.message;
         }
       }        
