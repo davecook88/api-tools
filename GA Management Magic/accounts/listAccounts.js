@@ -11,8 +11,8 @@ function listAccounts() {
       analytics.user,
       account.id,
       account.name,
-      property.name,
       property.url,
+      property.name,
       property.id,
     ]);    
   });

@@ -26,6 +26,9 @@ function onOpen(e) {
       menu
         .addItem("List properties", "listAccounts")
         .addItem("Delete non-account sheets", "deleteSheets")
+        .addSeparator()
+        .addItem("Update properties", "updateProperties")
+        .addSeparator()
         .addItem("List audiences", "listAudiences")
         .addItem("Update audiences", "updateAudiences")
         .addSeparator()
