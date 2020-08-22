@@ -30,7 +30,8 @@ function _formatPropertiesSheet(sheet) {
     "SPORTS",
     "TRAVEL",
   ];
-  const columnHeaders = Object.keys(mapPropertiesValues());
+  const columnHeaders = [Object.keys(mapPropertiesValues())];
+  Logger.log(columnHeaders);
 
   const sheetFormatter = new SheetFormatter(sheet);
   sheetFormatter.setTopRowValues(columnHeaders);
