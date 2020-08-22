@@ -122,11 +122,5 @@ function updateDimensions(dimensions) {
     }
   }
   
-  // send Measurement Protocol hit to Google Analytics
-  var label = propertiesUpdated;
-  var value = numDimensionsUpdated;
-  var httpResponse = mpHit(SpreadsheetApp.getActiveSpreadsheet().getUrl(),'update dimensions',label,value);
-  Logger.log(httpResponse);
-  
   return "success";
 }

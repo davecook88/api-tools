@@ -111,12 +111,7 @@ function formatMetricSheet(createNew) {
   } catch (e) {
     return "failed to set the header values and format ranges\n"+ e.message;
   }
-  
-  // send Measurement Protocol hit to Google Analytics
-  var label = '';
-  var value = '';
-  var httpResponse = mpHit(SpreadsheetApp.getActiveSpreadsheet().getUrl(),'format metric sheet',label,value);
-  Logger.log(httpResponse);
+
   
   return sheet;
 }

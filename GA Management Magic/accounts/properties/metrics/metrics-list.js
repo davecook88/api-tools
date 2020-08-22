@@ -94,11 +94,5 @@ function listMetrics(propertyList) {
     return e.message;
   }
   
-  // send Measurement Protocol event hit to Google Analytics
-  var label = propertyList;
-  var value = propertyList.length;
-  var httpResponse = mpHit(SpreadsheetApp.getActiveSpreadsheet().getUrl(),'list metrics',label,value);
-  Logger.log(httpResponse);
-  
   return "success";
 }
