@@ -27,21 +27,21 @@ function onOpen(e) {
         .addItem("List Accounts & Properties", "listAccounts")
         .addItem("Delete non-account sheets", "deleteSheets")
         .addSeparator()
-        .addSubmenu(
+        .addSubMenu(
           ui
             .createMenu("Properties")
             .addItem("List properties (detail)", "listProperties")
             .addItem("Update properties", "updateProperties")
         )
         .addSeparator()
-        .addSubmenu(
+        .addSubMenu(
           ui
             .createMenu("Audiences")
             .addItem("List audiences", "listAudiences")
             .addItem("Update audiences", "updateAudiences")
         )
         .addSeparator()
-        .addSubmenu(
+        .addSubMenu(
           ui
             .createMenu("Filters")
             .addItem("List filters", "requestFilterList")
@@ -49,7 +49,7 @@ function onOpen(e) {
         )
 
         .addSeparator()
-        .addSubmenu(
+        .addSubMenu(
           ui
             .createMenu("Dimensions")
             .addItem("List custom dimensions", "listDimensions")
@@ -57,12 +57,12 @@ function onOpen(e) {
         )
 
         .addSeparator()
-        .addSubmenu(
+        .addSubMenu(
           ui
             .createMenu("Metrics")
             .addItem("List custom metrics", "requestMetricList")
             .addItem("Update custom metrics", "requestMetricUpdate")
-        );
+        )
     }
     menu.addToUi();
   } catch (e) {

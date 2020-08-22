@@ -6,6 +6,7 @@ class SheetValues {
 
   assimilateEntry(entry) {
     this.idReference[entry.id] = entry;
+    
   }
 
   createRowsFromObject() {
