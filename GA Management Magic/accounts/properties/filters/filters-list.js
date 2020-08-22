@@ -167,12 +167,6 @@ function listFilters(accountList) {
     var sheet = ss.getSheetByName(formatFilterSheet(true));
     sheet.getRange(2,1,allFilters.length,allFilters[0].length).setValues(allFilters);
   } catch (e) {return "Error writing data to sheet: "+ e.message;}
-  
-  // send Measurement Protocol hit to Google Analytics
-  var label = accountList;
-  var value = accountList.length;
-  var httpResponse = mpHit(SpreadsheetApp.getActiveSpreadsheet().getUrl(),'list filters',label,value);
-  Logger.log(httpResponse);
-  
+
   return "success";
 }
