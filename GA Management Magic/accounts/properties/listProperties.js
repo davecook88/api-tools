@@ -5,10 +5,11 @@ function listProperties() {
   Logger.log(included);
   const analytics = new AnalyticsManager(included);
   const propertiesSheet = createSheetIfNeeded(ss, "properties"); // returns SpreadsheetManager
-  const propertiesSheetValues = new SheetValues(propertiesSheet);
+  const propertiesSheetValuesObject = new SheetValues(propertiesSheet);
 
   analytics.forEachProperty((property, account, analytics) => {
-    const rowObject = mapPropertiesValues(property);
+    Logger.log(property.GAProperty);
+    const rowObject = mapPropertiesValues(property.GAProperty);
     Logger.log(rowObject);
     propertiesSheetValuesObject.assimilateEntry(rowObject);
   });

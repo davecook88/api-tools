@@ -1,5 +1,6 @@
 class Property {
   constructor(property) {
+    this.GAProperty = property;
     this.id = property.getId();
     this.name = property.name;
     this.url = property.websiteUrl;

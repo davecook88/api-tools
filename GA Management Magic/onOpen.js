@@ -24,24 +24,45 @@ function onOpen(e) {
         .addItem("About this Add-on", "about");
     } else {
       menu
-        .addItem("List properties", "listAccounts")
+        .addItem("List Accounts & Properties", "listAccounts")
         .addItem("Delete non-account sheets", "deleteSheets")
         .addSeparator()
-        .addItem("Update properties", "updateProperties")
+        .addSubmenu(
+          ui
+            .createMenu("Properties")
+            .addItem("List properties (detail)", "listProperties")
+            .addItem("Update properties", "updateProperties")
+        )
         .addSeparator()
-        .addItem("List audiences", "listAudiences")
-        .addItem("Update audiences", "updateAudiences")
+        .addSubmenu(
+          ui
+            .createMenu("Audiences")
+            .addItem("List audiences", "listAudiences")
+            .addItem("Update audiences", "updateAudiences")
+        )
         .addSeparator()
-        .addItem("List filters", "requestFilterList")
-        .addItem("Update filters", "requestFilterUpdate")
+        .addSubmenu(
+          ui
+            .createMenu("Filters")
+            .addItem("List filters", "requestFilterList")
+            .addItem("Update filters", "requestFilterUpdate")
+        )
+
         .addSeparator()
-        .addItem("List custom dimensions", "listDimensions")
-        .addItem("Update custom dimensions", "requestDimensionUpdate")
+        .addSubmenu(
+          ui
+            .createMenu("Dimensions")
+            .addItem("List custom dimensions", "listDimensions")
+            .addItem("Update custom dimensions", "requestDimensionUpdate")
+        )
+
         .addSeparator()
-        .addItem("List custom metrics", "requestMetricList")
-        .addItem("Update custom metrics", "requestMetricUpdate")
-        .addSeparator()
-        .addItem("About this Add-on", "about");
+        .addSubmenu(
+          ui
+            .createMenu("Metrics")
+            .addItem("List custom metrics", "requestMetricList")
+            .addItem("Update custom metrics", "requestMetricUpdate")
+        );
     }
     menu.addToUi();
   } catch (e) {
