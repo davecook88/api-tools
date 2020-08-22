@@ -1,6 +1,6 @@
 function _formatDimensionsSheet(sheet) {
   const columnHeaders = [
-    ["Include", "Property", "Name", "Index", "Scope", "Active"]
+    ["include", "property", "name", "index", "scope", "active", "url", "updated", "created"]
   ];
 
   const sheetFormatter = new SheetFormatter(sheet);
@@ -8,11 +8,14 @@ function _formatDimensionsSheet(sheet) {
   sheetFormatter.setTopRowFormat(globals.format.topRow);
 
   const includeColumnOptions = ["✓", ""];
-  sheetFormatter.addDropdownsToColumn('Include',includeColumnOptions);
+  sheetFormatter.addDropdownsToColumn('include',includeColumnOptions);
 
   const scopeColumnOptions = ["USER", "SESSION", "HIT", "PRODUCT"];
-  sheetFormatter.addDropdownsToColumn('Scope',scopeColumnOptions);
+  sheetFormatter.addDropdownsToColumn('scope',scopeColumnOptions);
 
   const activeColumnOptions =  ["TRUE", "FALSE"];
-  sheetFormatter.addDropdownsToColumn('Active',activeColumnOptions);
+  sheetFormatter.addDropdownsToColumn('active',activeColumnOptions);
+
+  sheetFormatter.resizeColumns();
+  sheetFormatter.setSheetFormat(globals.format.all);
 }

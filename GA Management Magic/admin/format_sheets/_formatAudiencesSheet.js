@@ -27,6 +27,7 @@ function _formatAudiencesSheet(sheet) {
   const sheetFormatter = new SheetFormatter(sheet);
   sheetFormatter.setTopRowValues(columnHeaders);
   sheetFormatter.setTopRowFormat(globals.format.topRow);
+  sheetFormatter.setSheetFormat(globals.format.all);
 
   const includeColumnOptions = ["✓", ""];
   sheetFormatter.addDropdownsToColumn("include", includeColumnOptions);
@@ -36,4 +37,7 @@ function _formatAudiencesSheet(sheet) {
 
   const daysToLookBackOptions = [7, 14, 30];
   sheetFormatter.addDropdownsToColumn("daysToLookBack", daysToLookBackOptions);
+
+  sheetFormatter.resizeColumns();
+  sheetFormatter.setSheetFormat(globals.format.all);
 }

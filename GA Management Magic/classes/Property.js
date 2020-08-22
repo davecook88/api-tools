@@ -14,4 +14,9 @@ class Property {
     const { id, accountId } = this;
     return Analytics.Management.RemarketingAudience.list(accountId, id);
   }
+
+  getDimensionList() {
+    const { id, accountId } = this;
+    return Analytics.Management.CustomDimensions.list(accountId, id);
+  }
 }

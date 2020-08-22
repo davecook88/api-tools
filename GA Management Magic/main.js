@@ -41,15 +41,11 @@ function onOpen(e) {
       .addItem('List filters', 'requestFilterList')
       .addItem('Update filters', 'requestFilterUpdate')
       .addSeparator()
-      .addItem('List custom dimensions', 'requestDimensionList')
+      .addItem('List custom dimensions', 'listDimensions')
       .addItem('Update custom dimensions', 'requestDimensionUpdate')
       .addSeparator()
       .addItem('List custom metrics', 'requestMetricList')
       .addItem('Update custom metrics', 'requestMetricUpdate')
-      .addSeparator()
-      .addItem('Format filter sheet', 'formatFilterSheet')
-      .addItem('Format dimension sheet', 'formatDimensionSheet')
-      .addItem('Format metric sheet', 'formatMetricSheet')
       .addSeparator()
       .addItem('About this Add-on','about');  
     }

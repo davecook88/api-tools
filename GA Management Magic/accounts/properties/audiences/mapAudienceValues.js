@@ -6,7 +6,7 @@ function mapAudienceValues(audience) {
     name: audience.name,
     description: audience.description,
     type: audience.type,
-    isSmartList: audience.audienceDefinition.includeConditions.isSmartList,
+    isSmartList: audience.audienceDefinition || audience.audienceDefinition.includeConditions.isSmartList || '',
     daysToLookBack:
       audience.audienceDefinition ? audience.audienceDefinition.includeConditions.daysToLookBack : '',
     membershipDurationDays:
