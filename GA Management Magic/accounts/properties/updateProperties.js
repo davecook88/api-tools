@@ -6,10 +6,12 @@ function updateProperties() {
     const included = row.col("include") !== "";
     if (included) {
       // {"id":"UA-145357337-1","name":"Patreon","url":"https://www.patreon.com/lakarencita","accountId":"145357337"}
-      const id = row.col("property id");
-      const name = row.col("property name");
-      const url = row.col("property url");
-      const accountId = row.col("account id");
+      const id = row.col("property_id");
+      const name = row.col("property_name");
+      const url = row.col("property_url");
+      const accountId = row.col("account_id")+ '';
+      
+      Logger.log(row);
 
       const resource = {
         id:id,
@@ -17,6 +19,7 @@ function updateProperties() {
         url:url,
         accountId:accountId,
       }
+      Logger.log(resource, accountId, id)
       Analytics.Management.Webproperties.update(resource, accountId, id);
     }
   });
