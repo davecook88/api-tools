@@ -1,4 +1,3 @@
-// TODO: Add formatting once I know which headers go in this sheet
 
 function _formatPropertiesSheet(sheet) {
   const verticalOptions = [
