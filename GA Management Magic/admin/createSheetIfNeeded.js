@@ -7,7 +7,7 @@
  * @returns SpreadsheetManager{object}
  */
 function createSheetIfNeeded(ss, type, property) {
-  const sheetName = `${property.id} - ${type}`;
+  const sheetName = type === 'properties' ? 'Properties - detail' : `${property.id} - ${type}`;
   const ssm = new SpreadsheetManager(ss, sheetName);
   if (!ssm.sheet) {
     formatDisplaySheet(ss, sheetName, type);
