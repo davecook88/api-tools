@@ -20,4 +20,9 @@ class Property {
     const { id, accountId } = this;
     return Analytics.Management.CustomDimensions.list(accountId, id);
   }
+
+  getProfileList(){
+    const { id, accountId } = this;
+    return Analytics.Management.Profiles.list(accountId, id);
+  }
 }

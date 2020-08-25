@@ -10,6 +10,9 @@ function formatDisplaySheet(ss, sheetName, type) {
     case "properties":
       _formatPropertiesSheet(sheet);
       return sheet;
+    case "profiles":
+      _formatProfilesSheet(sheet);
+      return sheet;
 
     default:
   }

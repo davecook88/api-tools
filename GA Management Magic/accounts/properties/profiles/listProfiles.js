@@ -5,24 +5,24 @@ function listProfiles() {
   Logger.log(included);
   const analytics = new AnalyticsManager(included);
   analytics.forEachProperty((property, account, analytics) => {
-    const dimensionList = property.getDimensionList();
-    dimensions = dimensionList.getItems() || [];
-    if (!dimensions.length) {
-      SpreadsheetApp.getUi().alert("No dimensions for property " + property.id);
+    const profileList = property.getProfileList();
+    profiles = profileList.getItems() || [];
+    if (!profiles.length) {
+      SpreadsheetApp.getUi().alert("No profiles for property " + property.id);
     } else {
-      const dimensionSheet = createSheetIfNeeded(ss, "dimensions", property); // returns SpreadsheetManager
-      const dimensionSheetValuesObject = new SheetValues(dimensionSheet);
+      const profilesheet = createSheetIfNeeded(ss, "profiles", property); // returns SpreadsheetManager
+      const profilesheetValuesObject = new SheetValues(profilesheet);
 
-      dimensions.forEach((dimension) => {
+      profiles.forEach((dimension) => {
         const rowObject = mapDimensionValues(dimension);
-        dimensionSheetValuesObject.assimilateEntry(rowObject);
+        profilesheetValuesObject.assimilateEntry(rowObject);
       });
       // Delete all existing values from sheet and replace them with the new data.
-      dimensionSheet.values = dimensionSheet.values.slice(0, 1);
-      const newRows = dimensionSheetValuesObject.createRowsFromObject();
+      profilesheet.values = profilesheet.values.slice(0, 1);
+      const newRows = profilesheetValuesObject.createRowsFromObject();
       if (newRows) {
-        dimensionSheet.values.push(...newRows);
-        dimensionSheet.clearSheetAndPasteValues();
+        profilesheet.values.push(...newRows);
+        profilesheet.clearSheetAndPasteValues();
       }
     }
   });
