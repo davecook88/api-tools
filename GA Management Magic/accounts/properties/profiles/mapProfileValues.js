@@ -8,20 +8,20 @@ function mapProfileValues(profile = {}) {
     webPropertyId: profile.webPropertyId || "",
     websiteUrl: profile.websiteUrl || "",
     currency: profile.currency || "",
-    timezone: profile.timezone || "",
+    timezone: profile.timezone || null,
     defaultPage: profile.defaultPage || "",
     excludeQueryParameters: profile.excludeQueryParameters || "",
-    stripSiteSearchQueryParameters: profile.stripSiteSearchQueryParameters || "",
+    stripSiteSearchQueryParameters: profile.stripSiteSearchQueryParameters || false,
     siteSearchCategoryParameters: profile.siteSearchCategoryParameters || "",
-    stripSiteSearchCategoryParameters: profile.stripSiteSearchCategoryParameters || "", 
+    stripSiteSearchCategoryParameters: profile.stripSiteSearchCategoryParameters || false, 
     siteSearchQueryParameters:
       profile.siteSearchQueryParameters || "",
     eCommerceTracking: profile.eCommerceTracking || "",
     enhancedECommerceTracking: profile.enhancedECommerceTracking || "",
-    botFilteringEnabled: profile.botFilteringEnabled || "",
-    created: profile.created || "",
-    updated: profile.updated || "",
-    starred: profile.starred || "",
+    botFilteringEnabled: profile.botFilteringEnabled || false,
+    created: profile.created || null,
+    updated: profile.updated || null,
+    starred: profile.starred || false,
 
 
     permissions: profile.permissions

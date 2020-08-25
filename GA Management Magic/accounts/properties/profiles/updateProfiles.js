@@ -1,5 +1,6 @@
 function updateProfiles() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const allSheets = ss.getSheets();
   const profileSheets = allSheets
     .filter((sheet) => sheet.getName().indexOf("profiles") > -1)
     .map((sheet) => new SpreadsheetManager(ss, sheet.getName()));
@@ -17,11 +18,13 @@ function updateProfiles() {
         Logger.log(resource);
         const updatedResource = mapSheetToProfileResource(rowObject, resource);
         Logger.log(updatedResource);
-        Analytics.Management.Webproperties.update(
+        const updateResponse = Analytics.Management.Profiles.update(
           updatedResource,
           rowObject.account,
+          rowObject.webPropertyId,
           rowObject.id
         );
+        Logger.log(updateResponse);
       }
     });
   });

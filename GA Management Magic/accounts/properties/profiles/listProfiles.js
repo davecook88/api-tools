@@ -13,8 +13,8 @@ function listProfiles() {
       const profilesheet = createSheetIfNeeded(ss, "profiles", property); // returns SpreadsheetManager
       const profilesheetValuesObject = new SheetValues(profilesheet);
 
-      profiles.forEach((dimension) => {
-        const rowObject = mapDimensionValues(dimension);
+      profiles.forEach((profile) => {
+        const rowObject = mapProfileValues(profile);
         profilesheetValuesObject.assimilateEntry(rowObject);
       });
       // Delete all existing values from sheet and replace them with the new data.
