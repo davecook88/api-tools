@@ -36,6 +36,13 @@ function onOpen(e) {
         .addSeparator()
         .addSubMenu(
           ui
+            .createMenu("Profiles (views)")
+            .addItem("List profiles", "listProfiles")
+            .addItem("Update profiles", "updateProfiles")
+        )
+        .addSeparator()
+        .addSubMenu(
+          ui
             .createMenu("Audiences")
             .addItem("List audiences", "listAudiences")
             .addItem("Update audiences", "updateAudiences")

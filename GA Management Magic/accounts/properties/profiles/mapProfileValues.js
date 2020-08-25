@@ -5,6 +5,7 @@ function mapProfileValues(profile = {}) {
     id: profile.id || "",
     kind: profile.kind || "",
     name: profile.name || "",
+    webPropertyId: profile.webPropertyId || "",
     websiteUrl: profile.websiteUrl || "",
     currency: profile.currency || "",
     timezone: profile.timezone || "",
@@ -33,30 +34,32 @@ function mapProfileValues(profile = {}) {
 
 // TODO: change this for updating
 /**
- * @desc Updates Webproperty resource pulled from Analytics API with any changes from the sheet before being passed back to the AI to update.
+ * @desc Updates Profile resource pulled from Analytics API with any changes from the sheet before being passed back to the AI to update.
  *
  * @param {*} rowObject from _Row.createObject method. This represents the data from the sheet. Each attribute represents a column header
- * @param {Google Analytics Webproperty} property property object from Google Analytics
+ * @param {Google Analytics profile} profile profile object from Google Analytics
  * @returns {}
  */
-function mapSheetToPropertyResource(rowObject = {}, property) {
-  property.name = rowObject.name || property.name;
-  property.websiteUrl = rowObject.websiteUrl || property.websiteUrl;
-  property.level = rowObject.level || property.level;
-  property.profileCount = rowObject.profileCount || property.profileCount;
-  property.dataRetentionTtl =
-    rowObject.dataRetentionTime || property.dataRetentionTtl;
-  property.dataRetentionResetOnNewActivity =
-    rowObject.dataRetentionResetOnNewActivity ||
-    property.dataRetentionResetOnNewActivity;
-  property.industryVertical =
-    rowObject.industryVertical || property.industryVertical;
-  property.created = rowObject.created || property.created;
-  property.updated = rowObject.updated || property.updated;
-  property.starred = rowObject.starred || property.starred;
-  property.permissions =
+function mapSheetToProfileResource(rowObject = {}, profile) {
+  profile.name = rowObject.name || profile.name;
+  profile.websiteUrl = rowObject.websiteUrl || profile.websiteUrl;
+  profile.level = rowObject.level || profile.level;
+  profile.profileCount = rowObject.profileCount || profile.profileCount;
+  profile.currency = rowObject.currency || profile.currency;
+  profile.timezone = rowObject.timezone || profile.timezone;
+  profile.defaultPage = rowObject.defaultPage || profile.defaultPage;
+  profile.excludeQueryParameters = rowObject.excludeQueryParameters || profile.excludeQueryParameters;
+  profile.stripSiteSearchQueryParameters = rowObject.stripSiteSearchQueryParameters || profile.stripSiteSearchQueryParameters;
+  profile.siteSearchCategoryParameters = rowObject.siteSearchCategoryParameters || profile.siteSearchCategoryParameters;
+  profile.eCommerceTracking = rowObject.eCommerceTracking || profile.eCommerceTracking;
+  profile.enhancedECommerceTracking = rowObject.enhancedECommerceTracking || profile.enhancedECommerceTracking;
+  profile.botFilteringEnabled = rowObject.botFilteringEnabled || profile.botFilteringEnabled;
+  profile.created = rowObject.created || profile.created;
+  profile.updated = rowObject.updated || profile.updated;
+  profile.starred = rowObject.starred || profile.starred;
+  profile.permissions =
     typeof rowObject.permissions === "string"
       ? { effective: rowObject.permissions.split(",") }
-      : property.permissions;
-  return property;
+      : profile.permissions;
+  return profile;
 }
