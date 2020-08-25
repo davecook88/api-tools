@@ -1,5 +1,5 @@
-function listDimensions() {
-  Logger.log("listDimensions");
+function listProfiles() {
+  Logger.log("listProfiles");
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const included = _getIncludedProperties(ss);
   Logger.log(included);

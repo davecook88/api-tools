@@ -5,7 +5,6 @@ function listAudiences() {
   Logger.log(included);
   const analytics = new AnalyticsManager(included);
   analytics.forEachProperty((property, account, analytics) => {
-    Logger.log(property, account, analytics);
     const audienceList = property.getAudienceList();
     audiences = audienceList.getItems() || [];
     if (!audiences.length) {
@@ -15,6 +14,7 @@ function listAudiences() {
       const audienceSheetValuesObject = new SheetValues(audienceSheet);
 
       audiences.forEach((audience) => {
+        Logger.log(audience);
         const rowObject = mapAudienceValues(audience);
         audienceSheetValuesObject.assimilateEntry(rowObject);
       });

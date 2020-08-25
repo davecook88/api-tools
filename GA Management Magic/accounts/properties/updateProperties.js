@@ -5,15 +5,16 @@ function updateProperties() {
   propertiesSheet.forEachRow((row) => {
     const included = row.col("include") !== "";
     if (included) {
-      const id = row.col("property_id");
-      const name = row.col("property_name");
-      const url = row.col("property_url");
-      const accountId = row.col("account_id") + "";
+      const rowObject = row.createObject();
 
-      Logger.log(row);
-      const resource = Analytics.Management.Webproperties.get(accountId, id);
-      resource.name = name;
-      Analytics.Management.Webproperties.update(resource, accountId, id);
+      const resource = Analytics.Management.Webproperties.get(
+        rowObject.account,
+        rowObject.id
+      );
+      Logger.log(resource);
+      const updatedResource = mapSheetToPropertyResource(rowObject, resource);
+      Logger.log(updatedResource);
+      Analytics.Management.Webproperties.update(updatedResource, rowObject.account, rowObject.id);
     }
   });
 }

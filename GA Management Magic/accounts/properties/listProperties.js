@@ -19,5 +19,6 @@ function listProperties() {
   if (newRows) {
     propertiesSheet.values.push(...newRows);
     propertiesSheet.clearSheetAndPasteValues();
+    propertiesSheet.resizeColumns();
   }
 }

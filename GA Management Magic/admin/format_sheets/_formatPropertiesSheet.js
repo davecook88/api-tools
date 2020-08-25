@@ -36,9 +36,10 @@ function _formatPropertiesSheet(sheet) {
   sheetFormatter.setTopRowValues(columnHeaders);
   sheetFormatter.setTopRowFormat(globals.format.topRow);
   sheetFormatter.setSheetFormat(globals.format.all);
-
+  
+  const includeColumnOptions = ["✓", ""];
+  sheetFormatter.addDropdownsToColumn("include", includeColumnOptions);
   sheetFormatter.addDropdownsToColumn('industryVertical',verticalOptions);
 
-  sheetFormatter.resizeColumns();
   sheetFormatter.setSheetFormat(globals.format.all);
 }

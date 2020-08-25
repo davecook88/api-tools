@@ -136,6 +136,14 @@ class SpreadsheetManager {
       return false;
     }
   }
+
+  resizeColumns(){
+    const { sheet } = this;
+    const lastCol = sheet.getMaxColumns();
+    for (let i = 1; i < lastCol; i++) {
+      sheet.autoResizeColumn (i);
+    }
+  }
   /**
    * @desc updates sheet with values from this.values;
    */

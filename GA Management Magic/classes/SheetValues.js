@@ -5,8 +5,10 @@ class SheetValues {
   }
 
   assimilateEntry(entry) {
+    Logger.log('assimilateEntry');
+    Logger.log('entry', entry);
+    Logger.log(entry.id)
     this.idReference[entry.id] = entry;
-    
   }
 
   createRowsFromObject() {
