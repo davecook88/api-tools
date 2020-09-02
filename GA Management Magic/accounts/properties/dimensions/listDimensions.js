@@ -27,4 +27,8 @@ function listDimensions() {
       }
     }
   });
+  if (emptyDimensions.length){
+    const message = emptyDimensions.length === 1 ? "No dimensions for property" : "No dimensions for properties"
+    SpreadsheetApp.getActiveSpreadsheet().toast(emptyDimensions.join("\n"), message);
+  }
 }

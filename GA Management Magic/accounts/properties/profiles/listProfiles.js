@@ -29,6 +29,6 @@ function listProfiles() {
   });
   if (emptyProfileList.length){
     const message = emptyProfileList.length === 1 ? "No profiles for property" : "No profiles for properties"
-    SpreadsheetApp.getActiveSpreadsheet().toast(emptyProfileList.join(", "), message);
+    SpreadsheetApp.getActiveSpreadsheet().toast(emptyProfileList.join("\n"), message);
   }
 }

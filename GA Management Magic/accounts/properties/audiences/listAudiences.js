@@ -31,7 +31,7 @@ function listAudiences() {
   });
   if (emptyAudiences.length){
     const message = emptyAudiences.length === 1 ? "No audiences for property" : "No audiences for properties"
-    SpreadsheetApp.getActiveSpreadsheet().toast(emptyAudiences.join(", "), message);
+    SpreadsheetApp.getActiveSpreadsheet().toast(emptyAudiences.join("\n"), message);
   }
 }
 

@@ -1,6 +1,7 @@
 function updateDimensions() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const allSheets = ss.getSheets();
+  const updatedResourceIds = [];
   const dimensionSheets = allSheets
     .filter((sheet) => sheet.getName().indexOf("dimensions") > -1)
     .map((sheet) => new SpreadsheetManager(ss, sheet.getName()));
@@ -16,20 +17,26 @@ function updateDimensions() {
           rowObject.id
         );
         Logger.log(resource);
-        const updatedResource = mapSheetToProfileResource(rowObject, resource);
+        const updatedResource = mapSheetToDimensionResource(rowObject, resource);
         Logger.log(updatedResource);
-        const updateResponse = Analytics.Management.Profiles.update(
+        const updateResponse = Analytics.Management.CustomDimensions.update(
           updatedResource,
           rowObject.account,
           rowObject.webPropertyId,
           rowObject.id
         );
         Logger.log(updateResponse);
+        if (updateResponse.id === rowObject.id){
+          updatedResourceIds.push(rowObject.id);
+        } else {
+          SpreadsheetApp.getUI().alert("Error updating " + rowObject.id);
+        }
       }
     });
   });
-  if (emptyDimensions.length){
-    const message = emptyDimensions.length === 1 ? "No dimensions for property" : "No dimensions for properties"
-    SpreadsheetApp.getActiveSpreadsheet().toast(emptyDimensions.join(", "), message);
+  if (updatedResourceIds.length){
+    const message = "Successfully updated:"
+    SpreadsheetApp.getActiveSpreadsheet().toast(updatedResourceIds.join("\n"), message);
   }
+  
 }
