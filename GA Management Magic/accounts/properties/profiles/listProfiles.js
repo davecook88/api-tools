@@ -8,7 +8,7 @@ function listProfiles() {
     const profileList = property.getProfileList();
     profiles = profileList.getItems() || [];
     if (!profiles.length) {
-      SpreadsheetApp.getUi().alert("No profiles for property " + property.id);
+      SpreadsheetApp.getUi().toast("No profiles for property " + property.id);
     } else {
       const profilesheet = createSheetIfNeeded(ss, "profiles", property); // returns SpreadsheetManager
       const profilesheetValuesObject = new SheetValues(profilesheet);

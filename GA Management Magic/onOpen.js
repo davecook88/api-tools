@@ -4,7 +4,7 @@ function onOpen(e) {
 
   // create the addon menu
   try {
-    var menu = ui.createAddonMenu();
+    var menu = ui.createMenu();
     if (e && e.authMode == ScriptApp.AuthMode.NONE) {
       // Add a normal menu item (works in all authorization modes).
       menu

@@ -8,7 +8,7 @@ function listAudiences() {
     const audienceList = property.getAudienceList();
     audiences = audienceList.getItems() || [];
     if (!audiences.length) {
-      SpreadsheetApp.getUi().alert("No audiences for property " + property.id);
+      SpreadsheetApp.getUi().toast("No audiences for property " + property.id);
     } else {
       const audienceSheet = createSheetIfNeeded(ss, "audiences", property); // returns SpreadsheetManager
       const audienceSheetValuesObject = new SheetValues(audienceSheet);

@@ -8,7 +8,7 @@ function listDimensions() {
     const dimensionList = property.getDimensionList();
     dimensions = dimensionList.getItems() || [];
     if (!dimensions.length) {
-      SpreadsheetApp.getUi().alert("No dimensions for property " + property.id);
+      SpreadsheetApp.getUi().toast("No dimensions for property " + property.id);
     } else {
       const dimensionSheet = createSheetIfNeeded(ss, "dimensions", property); // returns SpreadsheetManager
       const dimensionSheetValuesObject = new SheetValues(dimensionSheet);
