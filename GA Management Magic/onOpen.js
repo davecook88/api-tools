@@ -8,20 +8,20 @@ function onOpen(e) {
     if (e && e.authMode == ScriptApp.AuthMode.NONE) {
       // Add a normal menu item (works in all authorization modes).
       menu
-        .addItem("List filters", "requestFilterList")
-        .addItem("Update filters", "requestFilterUpdate")
-        .addSeparator()
-        .addItem("List custom dimensions", "requestDimensionList")
-        .addItem("Update custom dimensions", "requestDimensionUpdate")
-        .addSeparator()
-        .addItem("List custom metrics", "requestMetricList")
-        .addItem("Update custom metrics", "requestMetricUpdate")
-        .addSeparator()
-        .addItem("Format filter sheet", "formatFilterSheet")
-        .addItem("Format dimension sheet", "formatDimensionSheet")
-        .addItem("Format metric sheet", "formatMetricSheet")
-        .addSeparator()
-        .addItem("About this Add-on", "about");
+        // .addItem("List filters", "requestFilterList")
+        // .addItem("Update filters", "requestFilterUpdate")
+        // .addSeparator()
+        // .addItem("List custom dimensions", "requestDimensionList")
+        // .addItem("Update custom dimensions", "updateDimensions")
+        // .addSeparator()
+        // .addItem("List custom metrics", "requestMetricList")
+        // .addItem("Update custom metrics", "requestMetricUpdate")
+        // .addSeparator()
+        // .addItem("Format filter sheet", "formatFilterSheet")
+        // .addItem("Format dimension sheet", "formatDimensionSheet")
+        // .addItem("Format metric sheet", "formatMetricSheet")
+        // .addSeparator()
+        // .addItem("About this Add-on", "about");
     } else {
       menu
         .addItem("List Accounts & Properties", "listAccounts")
@@ -60,7 +60,7 @@ function onOpen(e) {
           ui
             .createMenu("Dimensions")
             .addItem("List custom dimensions", "listDimensions")
-            .addItem("Update custom dimensions", "requestDimensionUpdate")
+            .addItem("Update custom dimensions", "updateDimensions")
         )
 
         .addSeparator()

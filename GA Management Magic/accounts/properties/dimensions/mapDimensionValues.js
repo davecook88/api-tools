@@ -1,12 +1,15 @@
 function mapDimensionValues(dimension = {}) {
+  const formatBool = bool => bool ? "✓": "x";
   return {
     include: "",
+    accountId: dimension.accountId || '',
+    webPropertyId: dimension.webPropertyId || '',
     id:dimension.id || '',
     name: dimension.name || '',
     index: dimension.index || '',
     created:dimension.created || '',
     updated:dimension.updated || '',
-    active: dimension.active || '',
+    active: formatBool(dimension.active),
     url:dimension.selfLink || '',
     scope: dimension.scope || '',
   };
@@ -24,7 +27,7 @@ function mapSheetToDimensionResource(rowObject = {}, dimension) {
   return {
     "kind": "analytics#customDimension",
     "id": rowObject.id || dimension.id,
-    "accountId": rowObject.accountId || dimension.accountId,
+    "accountId": rowObject.accountId ? rowObject.accountId.toString() : dimension.accountId,
     "webPropertyId": rowObject.webPropertyId || dimension.webPropertyId,
     "name": rowObject.name || dimension.name,
     "index": rowObject.index || dimension.index,
@@ -33,6 +36,6 @@ function mapSheetToDimensionResource(rowObject = {}, dimension) {
     "created": rowObject.created || dimension.created,
     "updated": rowObject.updated || dimension.updated,
     "selfLink": dimension.selfLink,
-    "parentLink": dimensions.parentLink
+    "parentLink": dimension.parentLink
   }
 }

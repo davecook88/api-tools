@@ -11,7 +11,7 @@ function _formatDimensionsSheet(sheet) {
   const scopeColumnOptions = ["USER", "SESSION", "HIT", "PRODUCT"];
   sheetFormatter.addDropdownsToColumn('scope',scopeColumnOptions);
 
-  const activeColumnOptions =  ["TRUE", "FALSE"];
+  const activeColumnOptions =  ["✓", "x"];
   sheetFormatter.addDropdownsToColumn('active',activeColumnOptions);
 
   sheetFormatter.resizeColumns();
