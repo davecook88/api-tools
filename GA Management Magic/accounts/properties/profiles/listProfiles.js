@@ -3,12 +3,13 @@ function listProfiles() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const included = _getIncludedProperties(ss);
   Logger.log(included);
+  const emptyProfileList = [];
   const analytics = new AnalyticsManager(included);
   analytics.forEachProperty((property, account, analytics) => {
     const profileList = property.getProfileList();
     profiles = profileList.getItems() || [];
     if (!profiles.length) {
-      SpreadsheetApp.getUi().toast("No profiles for property " + property.id);
+      emptyProfileList.push(property.id)
     } else {
       const profilesheet = createSheetIfNeeded(ss, "profiles", property); // returns SpreadsheetManager
       const profilesheetValuesObject = new SheetValues(profilesheet);
@@ -26,4 +27,8 @@ function listProfiles() {
       }
     }
   });
+  if (emptyProfileList.length){
+    const message = emptyProfileList.length === 1 ? "No profiles for property" : "No profiles for properties"
+    SpreadsheetApp.getActiveSpreadsheet().toast(emptyProfileList.join(", "), message);
+  }
 }

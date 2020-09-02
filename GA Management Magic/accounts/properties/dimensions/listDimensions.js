@@ -3,12 +3,13 @@ function listDimensions() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const included = _getIncludedProperties(ss);
   Logger.log(included);
+  const emptyDimensions = [];
   const analytics = new AnalyticsManager(included);
   analytics.forEachProperty((property, account, analytics) => {
     const dimensionList = property.getDimensionList();
     dimensions = dimensionList.getItems() || [];
     if (!dimensions.length) {
-      SpreadsheetApp.getUi().toast("No dimensions for property " + property.id);
+      emptyDimensions.push(property.id);  
     } else {
       const dimensionSheet = createSheetIfNeeded(ss, "dimensions", property); // returns SpreadsheetManager
       const dimensionSheetValuesObject = new SheetValues(dimensionSheet);

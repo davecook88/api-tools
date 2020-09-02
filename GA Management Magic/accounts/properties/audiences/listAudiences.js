@@ -3,12 +3,14 @@ function listAudiences() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const included = _getIncludedProperties(ss);
   Logger.log(included);
+  const emptyAudiences = [];
   const analytics = new AnalyticsManager(included);
   analytics.forEachProperty((property, account, analytics) => {
     const audienceList = property.getAudienceList();
     audiences = audienceList.getItems() || [];
     if (!audiences.length) {
-      SpreadsheetApp.getUi().toast("No audiences for property " + property.id);
+      emptyAudiences.push(property.id)
+      
     } else {
       const audienceSheet = createSheetIfNeeded(ss, "audiences", property); // returns SpreadsheetManager
       const audienceSheetValuesObject = new SheetValues(audienceSheet);
@@ -27,6 +29,10 @@ function listAudiences() {
       }
     }
   });
+  if (emptyAudiences.length){
+    const message = emptyAudiences.length === 1 ? "No audiences for property" : "No audiences for properties"
+    SpreadsheetApp.getActiveSpreadsheet().toast(emptyAudiences.join(", "), message);
+  }
 }
 
 

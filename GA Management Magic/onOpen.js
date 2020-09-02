@@ -4,7 +4,7 @@ function onOpen(e) {
 
   // create the addon menu
   try {
-    var menu = ui.createMenu();
+    var menu = ui.createMenu('GA Management Magic');
     if (e && e.authMode == ScriptApp.AuthMode.NONE) {
       // Add a normal menu item (works in all authorization modes).
       menu
