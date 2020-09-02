@@ -49,7 +49,7 @@ function requestDimensionUpdate() {
 * Updates dimension settings from the active sheet to a property.
 * @return {string} Operation output ("success" or error message)
 */
-function updateDimensions(dimensions) {
+function updateDimensionsOld(dimensions) {
   // set common values
   var maxRows = (propertyType == "PREMIUM") ? 200 : 20;
   var numDimensionsUpdated = 0;

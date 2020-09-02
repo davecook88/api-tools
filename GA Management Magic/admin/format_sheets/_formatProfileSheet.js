@@ -11,9 +11,11 @@ function _formatProfilesSheet(sheet) {
   const includeColumnOptions = ["✓", ""];
   sheetFormatter.addDropdownsToColumn("include", includeColumnOptions);
 
-  const bools = [true, false];
+  const bools = ["✓", "x"];
   sheetFormatter.addDropdownsToColumn('stripSiteSearchQueryParameters',bools);
   sheetFormatter.addDropdownsToColumn('stripSiteSearchCategoryParameters',bools);
+  sheetFormatter.addDropdownsToColumn('starred',bools);
+  sheetFormatter.addDropdownsToColumn('botFilteringEnabled',bools);
 
   sheetFormatter.setSheetFormat(globals.format.all);
 }

@@ -1,7 +1,5 @@
 function _formatDimensionsSheet(sheet) {
-  const columnHeaders = [
-    ["include", "property", "name", "index", "scope", "active", "url", "updated", "created"]
-  ];
+  const columnHeaders = [Object.keys(mapDimensionValues())];
 
   const sheetFormatter = new SheetFormatter(sheet);
   sheetFormatter.setTopRowValues(columnHeaders);

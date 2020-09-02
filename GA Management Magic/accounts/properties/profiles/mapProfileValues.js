@@ -1,4 +1,5 @@
 function mapProfileValues(profile = {}) {
+  const formatBool = bool => bool ? "✓": "x";
   return {
     include: "",
     account: profile.accountId || "",
@@ -11,17 +12,17 @@ function mapProfileValues(profile = {}) {
     timezone: profile.timezone || null,
     defaultPage: profile.defaultPage || "",
     excludeQueryParameters: profile.excludeQueryParameters || "",
-    stripSiteSearchQueryParameters: profile.stripSiteSearchQueryParameters || false,
+    stripSiteSearchQueryParameters:  formatBool(profile.stripSiteSearchQueryParameters),
     siteSearchCategoryParameters: profile.siteSearchCategoryParameters || "",
-    stripSiteSearchCategoryParameters: profile.stripSiteSearchCategoryParameters || false, 
+    stripSiteSearchCategoryParameters:  formatBool(profile.stripSiteSearchCategoryParameters), 
     siteSearchQueryParameters:
       profile.siteSearchQueryParameters || "",
     eCommerceTracking: profile.eCommerceTracking || "",
     enhancedECommerceTracking: profile.enhancedECommerceTracking || "",
-    botFilteringEnabled: profile.botFilteringEnabled || false,
+    botFilteringEnabled: formatBool(profile.botFilteringEnabled),
     created: profile.created || null,
     updated: profile.updated || null,
-    starred: profile.starred || false,
+    starred: formatBool(profile.starred),
 
 
     permissions: profile.permissions
@@ -41,6 +42,7 @@ function mapProfileValues(profile = {}) {
  * @returns {}
  */
 function mapSheetToProfileResource(rowObject = {}, profile) {
+  const formatBool = value => value === "✓" ? true : false;
   profile.name = rowObject.name || profile.name;
   profile.websiteUrl = rowObject.websiteUrl || profile.websiteUrl;
   profile.level = rowObject.level || profile.level;
@@ -48,15 +50,15 @@ function mapSheetToProfileResource(rowObject = {}, profile) {
   profile.currency = rowObject.currency || profile.currency;
   profile.timezone = rowObject.timezone || profile.timezone;
   profile.defaultPage = rowObject.defaultPage || profile.defaultPage;
-  profile.excludeQueryParameters = rowObject.excludeQueryParameters || profile.excludeQueryParameters;
-  profile.stripSiteSearchQueryParameters = rowObject.stripSiteSearchQueryParameters || profile.stripSiteSearchQueryParameters;
+  profile.excludeQueryParameters = formatBool(rowObject.excludeQueryParameters);
+  profile.stripSiteSearchQueryParameters = formatBool(rowObject.stripSiteSearchQueryParameters);
   profile.siteSearchCategoryParameters = rowObject.siteSearchCategoryParameters || profile.siteSearchCategoryParameters;
   profile.eCommerceTracking = rowObject.eCommerceTracking || profile.eCommerceTracking;
   profile.enhancedECommerceTracking = rowObject.enhancedECommerceTracking || profile.enhancedECommerceTracking;
-  profile.botFilteringEnabled = rowObject.botFilteringEnabled || profile.botFilteringEnabled;
+  profile.botFilteringEnabled = formatBool(rowObject.botFilteringEnabled);
   profile.created = rowObject.created || profile.created;
   profile.updated = rowObject.updated || profile.updated;
-  profile.starred = rowObject.starred || profile.starred;
+  profile.starred = formatBool(rowObject.starred);
   profile.permissions =
     typeof rowObject.permissions === "string"
       ? { effective: rowObject.permissions.split(",") }
