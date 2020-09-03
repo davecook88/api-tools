@@ -13,6 +13,9 @@ function formatDisplaySheet(ss, sheetName, type) {
     case "profiles":
       _formatProfilesSheet(sheet);
       return sheet;
+    case "metrics":
+      _formatMetricsSheet(sheet);
+      return sheet;
 
     default:
   }

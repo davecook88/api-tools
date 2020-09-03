@@ -67,8 +67,8 @@ function onOpen(e) {
         .addSubMenu(
           ui
             .createMenu("Metrics")
-            .addItem("List custom metrics", "requestMetricList")
-            .addItem("Update custom metrics", "requestMetricUpdate")
+            .addItem("List custom metrics", "listMetrics")
+            .addItem("Update custom metrics", "updateMetrics")
         )
     }
     menu.addToUi();

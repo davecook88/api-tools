@@ -1,0 +1,20 @@
+{
+  "webPropertyId": "UA-145357337-3",
+  "scope": "HIT",
+  "type": "TIME",
+  "created": "2020-07-20T01:02:27.496Z",
+  "accountId": "145357337",
+  "kind": "analytics#customMetric",
+  "updated": "2020-07-20T01:19:46.758Z",
+  "id": "ga:metric1",
+  "active": false,
+  "parentLink": {
+    "href": "https://www.googleapis.com/analytics/v3/management/accounts/145357337/webproperties/UA-145357337-3",
+    "type": "analytics#webproperty"
+  },
+  "max_value": "50",
+  "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/145357337/webproperties/UA-145357337-3/customMetrics/ga:metric1",
+  "index": 1,
+  "min_value": "10",
+  "name": "working"
+}

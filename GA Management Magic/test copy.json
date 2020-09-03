@@ -1,0 +1,18 @@
+{
+  "kind": "analytics#customMetric",
+  "id": "ga:metric1",
+  "accountId": "145357337",
+  "webPropertyId": "UA-145357337-3",
+  "name": "workinga",
+  "index": 1,
+  "scope": "HIT",
+  "type": "TIME",
+  "active": false,
+  "created": "2020-07-20T01:02:27.496Z",
+  "updated": "2020-07-20T01:19:46.758Z",
+  "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/145357337/webproperties/UA-145357337-3/customMetrics/ga:metric1",
+  "parentLink": {
+    "href": "https://www.googleapis.com/analytics/v3/management/accounts/145357337/webproperties/UA-145357337-3",
+    "type": "analytics#webproperty"
+  }
+}
