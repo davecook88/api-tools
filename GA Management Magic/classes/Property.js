@@ -21,6 +21,11 @@ class Property {
     return Analytics.Management.CustomDimensions.list(accountId, id);
   }
 
+  getFilterList() {
+    const { id, accountId } = this;
+    return Analytics.Management.CustomFilters.list(accountId, id);
+  }
+
   getMetricList() {
     const { id, accountId } = this;
     return Analytics.Management.CustomMetrics.list(accountId, id);

@@ -8,9 +8,18 @@ function listProfiles() {
   analytics.forEachProperty((property, account, analytics) => {
     const profileList = property.getProfileList();
     profiles = profileList.getItems() || [];
+    let createSheet = true;
     if (!profiles.length) {
-      emptyProfileList.push(property.id)
-    } else {
+      const createEmptyResponse = SpreadsheetApp.getUi().alert(
+        "No profile found for " + property.id + ". Create an empty sheet?",
+        ui.ButtonSet.YES_NO
+      );
+      if (createEmptyResponse == ui.Button.NO) {
+        createSheet = false;
+        emptyProfileList.push(property.id);
+      }
+    }
+    if (createSheet) {
       const profilesheet = createSheetIfNeeded(ss, "profiles", property); // returns SpreadsheetManager
       const profilesheetValuesObject = new SheetValues(profilesheet);
 
@@ -27,8 +36,14 @@ function listProfiles() {
       }
     }
   });
-  if (emptyProfileList.length){
-    const message = emptyProfileList.length === 1 ? "No profiles for property" : "No profiles for properties"
-    SpreadsheetApp.getActiveSpreadsheet().toast(emptyProfileList.join("\n"), message);
+  if (emptyProfileList.length) {
+    const message =
+      emptyProfileList.length === 1
+        ? "No profiles for property"
+        : "No profiles for properties";
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      emptyProfileList.join("\n"),
+      message
+    );
   }
 }
