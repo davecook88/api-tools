@@ -1,5 +1,6 @@
 function listProfiles() {
   Logger.log("listProfiles");
+  const ui = SpreadsheetApp.getUi();
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const included = _getIncludedProperties(ss);
   Logger.log(included);
@@ -10,11 +11,11 @@ function listProfiles() {
     profiles = profileList.getItems() || [];
     let createSheet = true;
     if (!profiles.length) {
-      const createEmptyResponse = SpreadsheetApp.getUi().alert(
+      const createEmptyResponse = ui.alert(
         "No profile found for " + property.id + ". Create an empty sheet?",
         ui.ButtonSet.YES_NO
       );
-      if (createEmptyResponse == ui.Button.NO) {
+      if (createEmptyResponse === ui.Button.NO) {
         createSheet = false;
         emptyProfileList.push(property.id);
       }

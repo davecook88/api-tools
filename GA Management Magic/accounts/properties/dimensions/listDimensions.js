@@ -1,4 +1,5 @@
 function listDimensions() {
+  const ui = SpreadsheetApp.getUi()
   Logger.log("listDimensions");
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const included = _getIncludedProperties(ss);
@@ -8,9 +9,18 @@ function listDimensions() {
   analytics.forEachProperty((property, account, analytics) => {
     const dimensionList = property.getDimensionList();
     dimensions = dimensionList.getItems() || [];
+    let createSheet = true;
     if (!dimensions.length) {
-      emptyDimensions.push(property.id);  
-    } else {
+      const createEmptyResponse = ui.alert(
+        "No dimensions found for " + property.id + ". Create an empty sheet?",
+        ui.ButtonSet.YES_NO
+      );
+      if (createEmptyResponse == ui.Button.NO) {
+        createSheet = false;
+        emptyDimensions.push(property.id);
+      }
+    }
+    if (createSheet) {
       const dimensionSheet = createSheetIfNeeded(ss, "dimensions", property); // returns SpreadsheetManager
       const dimensionSheetValuesObject = new SheetValues(dimensionSheet);
 
